@@ -2294,53 +2294,51 @@ skeleton newGA
 	}
 
 
-	void Solver_Lan::send_local_state_to(int _mypid)
-	{
-		_netstream << set_target(0);
-		_netstream << pack_begin
-			   << _mypid
-			   << current_trial()
-			   << current_iteration()
-			   << current_evaluations()
-			   << best_cost_trial()
-			   << best_solution_trial()
-			   << iteration_best_found_in_trial()
-			   << evaluations_best_found_in_trial()
-			   << time_best_found_trial()
-			   << worst_cost_trial()
-			   << current_best_cost()
-			   << current_best_solution()
-			   << current_worst_cost()
-			   << current_average_cost()
-			   << current_standard_deviation()
-			   << pack_end;
-	}
+  void Solver_Lan::send_local_state_to(int _mypid)  {
+    _netstream << set_target(0);
+    _netstream << pack_begin
+               << _mypid
+               << current_trial()
+               << current_iteration()
+               << current_evaluations()
+               << best_solution_trial()
+               << current_best_solution()
+               << best_cost_trial()
+               << worst_cost_trial()
+               << time_best_found_trial()
+               << current_best_cost()
+               << current_worst_cost()
+               << current_average_cost()
+               << current_standard_deviation()
+               << iteration_best_found_in_trial()
+               << evaluations_best_found_in_trial()
+               << pack_end;
+      }
 
-	int Solver_Lan::receive_local_state()
-	{
-		int r_pid=0;
+  int Solver_Lan::receive_local_state()  {
+    int r_pid=0;
 
-		_netstream._wait(packed);
+    _netstream._wait(packed);
 
-		_netstream << pack_begin
-		  	   >> r_pid
-		  	   >> _current_trial
-			   >> _current_iteration
-			   >> _current_evaluations
-		  	   >> _best_cost_trial
-		  	   >> _best_solution_trial
-			   >> _iteration_best_found_in_trial
-			   >> _evaluations_best_found_in_trial
-			   >> _time_best_found_in_trial
-			   >> _worst_cost_trial
-		  	   >> best_cost
-		  	   >> best_solution
-		  	   >> worst_cost
-		  	   >> average_cost
-			   >> standard_deviation
-			   << pack_end;
-		return r_pid;
-	}
+    _netstream << pack_begin
+               >> r_pid
+               >> _current_trial
+               >> _current_iteration
+               >> _current_evaluations
+               >> _best_solution_trial
+               >> best_solution
+               >> _best_cost_trial
+               >> _worst_cost_trial
+               >> _time_best_found_in_trial
+               >> best_cost
+               >> worst_cost
+               >> average_cost
+               >> standard_deviation
+               >> _iteration_best_found_in_trial
+               >> _evaluations_best_found_in_trial
+               << pack_end;
+    return r_pid;
+  }
 
 	void Solver_Lan::check_for_refresh_global_state() // Executed in process with pid 0
 	{
