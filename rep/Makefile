@@ -1,6 +1,6 @@
 all:
-	(cd CHC ; make)
-	(cd GA ; make)
+	make -C CHC
+	make -C GA
 clean:
-	(cd CHC ; make clean)
-	(cd GA ; make clean)
+	make -C CHC clean
+	make -C GA clean

@@ -1,4 +1,5 @@
-include ../../environment
+MALLBA_DIR=../..
+include $(MALLBA_DIR)/environment
 
 all: MainLan MainSeq
 

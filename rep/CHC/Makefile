@@ -1,4 +1,5 @@
-include ../../environment
+MALLBA_DIR=../..
+include $(MALLBA_DIR)/environment
 
 all: MainSeq MainLan
 
@@ -21,4 +22,4 @@ WAN:
 	$(RUN) -v  -p4pg pgfileWan MainWan
 
 SEQ:
-	./MainSeq CHC.cfg ../../ProblemInstances/ONEMAX-instances/onemax10.txt res/sol.txt
+	./MainSeq CHC.cfg $(MALLBA_DIR)/ProblemInstances/ONEMAX-instances/onemax10.txt res/sol.txt
