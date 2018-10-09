@@ -43,61 +43,65 @@ struct Messages
 	};
 };
 
+inline void show_message(const char * msg)
+{
+	cout << endl << "Error: " << msg << endl;
+	cout << endl << " " << endl;
+	exit(-1);
+}
+
 inline void show_message(Messages::value value)
 {
 	switch (value)
 	{
 		case Messages::WrongNumArgs:
-			cout << endl << "Error: number of arguments in the execution call is incorrect !!" << endl;
+			show_message("number of arguments in the execution call is incorrect !!");
 			break;
 		case Messages::ConfFileNotFound:
-			cout << endl << "Error: It's imposible find Configuration file !!" << endl;
+			show_message("It's imposible find Configuration file !!");
 			break;
 		/* Específicos de RLFAP */
 		case Messages::CelarCstFileNotFound:
-			cout << endl << "Error: It is imposible find the Celar problem definition file (cst.txt) !!" << endl;
+			show_message("It is imposible find the Celar problem definition file (cst.txt) !!");
 			break;
 		case Messages::CelarDomFileNotFound:
-			cout << endl << "Error: It is imposible find the Celar domains file (dom.txt) !!" << endl;
+			show_message("It is imposible find the Celar domains file (dom.txt) !!");
 			break;
 		case Messages::CelarVarFileNotFound:
-			cout << endl << "Error: It is imposible find the Celar links file (var.txt) !!" << endl;
+			show_message("It is imposible find the Celar links file (var.txt) !!");
 			break;
 		case Messages::CelarCtrFileNotFound:
-			cout << endl << "Error: It is imposible find the Celar constraints file (ctr.txt) !!" << endl;
+			show_message("It is imposible find the Celar constraints file (ctr.txt) !!");
 			break;
 		/* Fallos de Memoria */
 		case Messages::MallocError:
-			cout << endl << "Error: No avalible memory for \"malloc\" operation !!" << endl;
+			show_message("No avalible memory for \"malloc\" operation !!");
 			break;
 		case Messages::FreeError:
-			cout << endl << "Error: in \"free\" operation !!" << endl;
+			show_message("in \"free\" operation !!");
 			break;
 		/* Específicos del MaxCut */
 		case Messages::MaxcutFileNotFound:
-			cout << endl << "Error: It is imposible find the Maxcut file (Maxcut.txt) !!" << endl;
+			show_message("It is imposible find the Maxcut file (Maxcut.txt) !!");
 			break;
 		/* Genéricos de Falta de ficheros de configuracion  adicionales al mensaje 2 */
 		case Messages::ConfigFileNotFound:
-			cout << endl << "Error: It's imposible find Configuration file (Config.cfg) !!" << endl;
+			show_message("It's imposible find Configuration file (Config.cfg) !!");
 			break;
 		case Messages::SkeletonFileNotFound:
-			cout << endl << "Error: It's imposible find Skeleton Configuration File (Ske.cfg) !!" << endl;
+			show_message("It's imposible find Skeleton Configuration File (Ske.cfg) !!");
 			break;
 		case Messages::InstanceProblemFileNotFound:
-			cout << endl << "Error: It's imposible find Instance Problem File !!" << endl;
+			show_message("It's imposible find Instance Problem File !!");
 			break;
 		case Messages::ResultFileNotFound:
-			cout << endl << "Error: It's imposible find Resultate File !!" << endl;
+			show_message("It's imposible find Resultate File !!");
 			break;
 		case Messages::IndexOutOfRange:
-			cout << endl << "Error: Index out of Range !!" << endl;
+			show_message("Index out of Range !!");
 			break;
-		default: cout << endl << "Unkown Error !!" << endl;
+		default: show_message("Unkown Error !!");
 	}
-
-	cout << endl << " " << endl;
-	exit(-1);
 }
 
 inline void continue_question()
