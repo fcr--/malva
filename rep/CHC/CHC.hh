@@ -1,10 +1,10 @@
 /*********************************************************************************************************
-***												       												   ***
-***				      					CHC Skeleton v1.5	 			       						   ***
-***				     		   Developed by: Gabriel Jesús Luque Polo			    				   ***
-***												       												   ***
-***									  Last Update: 30-01-2004										   ***
-***												       												   ***
+***                                                                                                    ***
+***                                         CHC Skeleton v1.5                                          ***
+***                               Developed by: Gabriel Jesús Luque Polo                               ***
+***                                                                                                    ***
+***                                      Last Update: 30-01-2004                                       ***
+***                                                                                                    ***
 **********************************************************************************************************/
 
 #ifndef INC_CHC
@@ -73,10 +73,10 @@ skeleton CHC
 		Solution (const Solution& sol);
 		~Solution();
 
- 		friend ostream& operator<< (ostream& os, const Solution& sol);
+		friend ostream& operator<< (ostream& os, const Solution& sol);
 		friend istream& operator>> (istream& is, Solution& sol);
 		friend NetStream& operator << (NetStream& ns, const Solution& sol);
- 		friend NetStream& operator >> (NetStream& ns, Solution& sol);
+		friend NetStream& operator >> (NetStream& ns, Solution& sol);
 
 		const Problem& pbm() const;
 
@@ -125,12 +125,12 @@ skeleton CHC
 		Rlist<struct user_stat> result_trials;
 
 	public:
- 		UserStatistics ();
+		UserStatistics ();
 		~UserStatistics();
 
 		friend ostream& operator<< (ostream& os, const UserStatistics& usertats);
 
-       	UserStatistics& operator= (const UserStatistics& userstats);
+		UserStatistics& operator= (const UserStatistics& userstats);
 		void update(const Solver& solver);
 		void clear();
  };
@@ -240,12 +240,12 @@ skeleton CHC
 		unsigned int    _independent_runs;
 		unsigned long   _nb_evolution_steps;
 		unsigned long   _nb_iteration_steps;
-		unsigned int    _population_size;		// number of individuals
-		bool 			_display_state;
+		unsigned int    _population_size;        // number of individuals
+		bool            _display_state;
 
 		unsigned long   _refresh_global_state;
-		bool 			_synchronized;
-		unsigned int 	_check_asynchronous;
+		bool            _synchronized;
+		unsigned int    _check_asynchronous;
 
 		// selection of parents and offsprings
 		mutable unsigned int _select_parents;
@@ -260,15 +260,15 @@ skeleton CHC
 		SetUpParams (Operator_Pool& pool);
 		Operator_Pool& pool() const;
 
- 		friend ostream& operator<< (ostream& os, const SetUpParams& setup);
+		friend ostream& operator<< (ostream& os, const SetUpParams& setup);
 		friend istream& operator>> (istream& is, SetUpParams& setup);
 
 		const unsigned int  independent_runs() const;
 		const unsigned long nb_evolution_steps() const;
 		const unsigned int  population_size() const;
-		const bool 			display_state() const;
+		const bool          display_state() const;
 		const unsigned long refresh_global_state() const;
-		const bool 			synchronized() const;
+		const bool          synchronized() const;
 		const unsigned int  check_asynchronous() const;
 
 		void independent_runs(const unsigned int val);
@@ -279,11 +279,11 @@ skeleton CHC
 		void synchronized(const bool val);
 		void check_asynchronous(const unsigned int val);
 
-        // gets the i-th operator of inter-population
-        const unsigned int  inter_operator_index(const unsigned int index) const;
+		// gets the i-th operator of inter-population
+		const unsigned int  inter_operator_index(const unsigned int index) const;
 		const unsigned int  inter_operators_size() const;
 
-        // gets the i-th operator of intra-population
+		// gets the i-th operator of intra-population
 		const unsigned int intra_operator_index(const unsigned int index) const;
 		const unsigned int intra_operators_size() const;
 
@@ -323,7 +323,7 @@ skeleton CHC
 
 		friend ostream& operator<< (ostream& os, const Statistics& stats);
 
-	 	Statistics& operator= (const Statistics& stats);
+		Statistics& operator= (const Statistics& stats);
 		void update(const Solver& solver);
 		void clear();
   };
@@ -354,7 +354,7 @@ skeleton CHC
 		Population& operator= (const Population& pop);
 		const SetUpParams& setup() const;
 		const Problem& pbm() const;
-	  	void initialize();
+		void initialize();
 
 		// Generate a new pool of individuals in population
 		void evolution();
@@ -363,7 +363,7 @@ skeleton CHC
 		void interchange(const unsigned long current_generation, NetStream& channel);
 
 		// creates a array with fitness of all individuals in population and its position in the population
-    	void evaluate_parents();
+		void evaluate_parents();
 
 		// creates a array with fitness of all individuals and offsprings in population and its position in the population
 		void evaluate_offsprings();
@@ -374,7 +374,7 @@ skeleton CHC
 		// selects individuals for the new population
 		void select_offsprings();
 
-	 	const Rarray<Solution*>& parents() const;
+		const Rarray<Solution*>& parents() const;
 		const Rarray<Solution*>& offsprings() const;
 		Rarray<struct individual>& fitness_values();
 
@@ -400,12 +400,12 @@ skeleton CHC
 		unsigned int migration_rate;
 		unsigned int migration_size;
 		unsigned int migration_selection_1;
-	   	unsigned int migration_selection_2;
-	   	unsigned int migration_selection_conf_1;
-	   	unsigned int migration_selection_conf_2;
+		unsigned int migration_selection_2;
+		unsigned int migration_selection_conf_1;
+		unsigned int migration_selection_conf_2;
 
 		unsigned int _number_operator;
-	   	const Direction direction;
+		const Direction direction;
 
 	public:
 		Inter_Operator(const unsigned int _number_op, const Direction dir);
@@ -445,12 +445,12 @@ skeleton CHC
 	public:
 
 		Selection(const Direction dir);
- 	  	Selection(const unsigned int _number_sel, const Direction dir);
+		Selection(const unsigned int _number_sel, const Direction dir);
 		virtual ~Selection();
 
 		friend ostream& operator<< (ostream& os, const Selection& sel);
 
-       	virtual void prepare(Rarray<struct individual>& fitness_values,const bool remplace); // const;
+		virtual void prepare(Rarray<struct individual>& fitness_values,const bool remplace); // const;
 	  	virtual struct individual select_one(const Rarray<Solution*>& to_select_1,const Rarray<Solution*>& to_select_2,const Rarray<struct individual>& fitness_values,const unsigned int dummy,const bool remplace) const;
 	  	unsigned int number_selection() const;
 
@@ -473,7 +473,7 @@ skeleton CHC
 
 		friend ostream& operator<< (ostream& os, const Selection_Parents& sel);
 
-        virtual void prepare(Rarray<struct individual>& fitness_values,const bool remplace); // const;
+		virtual void prepare(Rarray<struct individual>& fitness_values,const bool remplace); // const;
 
 		virtual struct individual select_one(const Rarray<Solution*>& to_select_1,const Rarray<Solution*>& to_select_2,const Rarray<struct individual>& fitness_values,const unsigned int param,const bool remplace) const;
   };
@@ -507,7 +507,7 @@ skeleton CHC
 
   provides class Selection_Tournament: public Selection
   {
-  	public:
+	public:
 		Selection_Tournament(const Direction dir);
 		virtual ~Selection_Tournament();
 
@@ -517,7 +517,7 @@ skeleton CHC
   };
 
 // Selection_Roulette_Wheel  ---------------------------------------------------------------------------------
-  
+
   provides class Selection_Roulette_Wheel: public Selection
   {
 	public:
@@ -526,7 +526,7 @@ skeleton CHC
 
 		friend ostream& operator<< (ostream& os, const Selection_Roulette_Wheel& sel);
 
-       	virtual void prepare(Rarray<struct individual>& fitness_values,const bool remplace); // const;	
+		virtual void prepare(Rarray<struct individual>& fitness_values,const bool remplace); // const;	
 		virtual struct individual select_one(const Rarray<Solution*>& to_select_1,const Rarray<Solution*>& to_select_2,const Rarray<struct individual>& fitness_values,const unsigned int dummy,const bool remplace) const;
   };
 
@@ -541,7 +541,7 @@ skeleton CHC
 
 		friend ostream& operator<< (ostream& os, const Selection_Rank& sel);
 
-        virtual void prepare(Rarray<struct individual>& fitness_values,const bool remplace); // const;
+		virtual void prepare(Rarray<struct individual>& fitness_values,const bool remplace); // const;
 		virtual void reset();
 	
 		virtual struct individual select_one(const Rarray<Solution*>& to_select_1,const Rarray<Solution*>& to_select_2,const Rarray<struct individual>& fitness_values,const unsigned int portion,const bool remplace) const;
@@ -561,7 +561,7 @@ skeleton CHC
 		friend ostream& operator<< (ostream& os, const Selection_Best& sel);
 
 		virtual void reset();
-       	virtual struct individual select_one(const Rarray<Solution*>& to_select_1,const Rarray<Solution*>& to_select_2,const Rarray<struct individual>& fitness_values,const unsigned int position,const bool remplace) const;
+		virtual struct individual select_one(const Rarray<Solution*>& to_select_1,const Rarray<Solution*>& to_select_2,const Rarray<struct individual>& fitness_values,const unsigned int position,const bool remplace) const;
   };
 
 // Selection_Worst  ---------------------------------------------------------------------------------
@@ -587,9 +587,9 @@ skeleton CHC
   provides class Operator_Pool
   {
 	private:
-		mutable Rlist<Intra_Operator>	_intra_operators;
- 		Rlist<Selection>				_selectors;
- 		Rlist<Inter_Operator> 			_inter_operators;
+		mutable Rlist<Intra_Operator> _intra_operators;
+		Rlist<Selection>              _selectors;
+		Rlist<Inter_Operator>         _inter_operators;
 
 	public:
 		Operator_Pool(const Problem& pbm);
@@ -611,10 +611,10 @@ skeleton CHC
 	protected:
 		const Problem&     problem;
 		const SetUpParams& params;
- 		UserStatistics 	   _userstat;
+		UserStatistics 	   _userstat;
 		Statistics         _stat;
-		Population 		   current_population;
-		StateCenter		   _sc;
+		Population         current_population;
+		StateCenter        _sc;
 
 		double 	   best_cost;
 		double 	   worst_cost;
@@ -694,7 +694,7 @@ skeleton CHC
 		// Statistics handling ----------------------------------------------------------------------
 
 		Statistics& statistics();
- 		UserStatistics& userstatistics ();
+		UserStatistics& userstatistics ();
 		Population& population();
 		const SetUpParams& setup() const;
 		const Problem& pbm() const;
@@ -735,14 +735,14 @@ skeleton CHC
 		float *crossover_probability() const;
 		float *diverge_probability() const;
 		float *user_op_probability(const int index) const;
-        unsigned int migration_rate() const;
-        unsigned int migration_size() const;
-        unsigned int migration_selection_1() const;
-        unsigned int migration_selection_2() const;
-        unsigned int migration_selection_conf_1() const;
-        unsigned int migration_selection_conf_2() const;
+		unsigned int migration_rate() const;
+		unsigned int migration_size() const;
+		unsigned int migration_selection_1() const;
+		unsigned int migration_selection_2() const;
+		unsigned int migration_selection_conf_1() const;
+		unsigned int migration_selection_conf_2() const;
 		unsigned int select_parents() const;
- 		unsigned int select_offprings() const;
+		unsigned int select_offprings() const;
 		float parameter_select_new_pop() const;
 
 		void current_trial(const unsigned int value);
@@ -780,7 +780,7 @@ skeleton CHC
 		void migration_selection_conf_1(const unsigned int selection_conf_1);
 		void migration_selection_conf_2(const unsigned int selection_conf_2);
 		void select_parents(const unsigned int selection);
- 		void select_offsprings(const unsigned int selection);
+		void select_offsprings(const unsigned int selection);
 		void parameter_select_new_pop(const float value);
 
 		void KeepHistory(const Solution& best_sol,const double best_cost,const double worst_cost,const float time_spent_trial,const float total_time_spent);
@@ -820,8 +820,8 @@ skeleton CHC
 		void check_for_refresh_global_state();
 
 		unsigned int _current_trial;
- 		unsigned long _current_iteration;
- 		unsigned long _current_evaluations;
+		unsigned long _current_iteration;
+		unsigned long _current_evaluations;
 		double _best_cost_trial;
 		Solution _best_solution_trial;
 		double _worst_cost_trial;
@@ -868,8 +868,8 @@ skeleton CHC
 		void check_for_refresh_global_state();
 
 		unsigned int _current_trial;
- 		unsigned long _current_iteration;
- 		unsigned long _current_evaluations;
+		unsigned long _current_iteration;
+		unsigned long _current_evaluations;
 		double _best_cost_trial;
 		Solution _best_solution_trial;
 		double _worst_cost_trial;

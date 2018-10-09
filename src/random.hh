@@ -17,7 +17,7 @@ inline double undefined ()
 	return zero/zero;
 }
 
-// Returns a valeu greater than any other 
+// Returns a value greater than any other 
 inline double infinity ()
 {
 	double one=1.0; 

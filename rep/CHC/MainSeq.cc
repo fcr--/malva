@@ -9,13 +9,13 @@ int main (int argc, char** argv)
 	system("clear");
 
 	if(argc < 4)
-		show_message(1);
+		show_message(Messages::WrongNumArgs);
 
 	ifstream f1(argv[1]);
-	if (!f1) show_message(11);
+	if (!f1) show_message(Messages::SkeletonFileNotFound);
 
 	ifstream f2(argv[2]);
-	if (!f2) show_message(12);
+	if (!f2) show_message(Messages::InstanceProblemFileNotFound);
 
 	Problem pbm;
 	f2 >> pbm;
@@ -35,7 +35,7 @@ int main (int argc, char** argv)
 		cout << "\n\n :( ---------------------- THE END --------------- :) ";
 
 		ofstream fexit(argv[3]);
-		if(!fexit) show_message(13);
+		if(!fexit) show_message(Messages::ResultFileNotFound);
 		fexit << solver.userstatistics();
 
 	}

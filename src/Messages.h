@@ -21,42 +21,78 @@
 
 using namespace std;
 
-inline void show_message(int value)
+struct Messages
+{
+	enum value
+	{
+		WrongNumArgs = 1,
+		ConfFileNotFound = 2,
+		CelarCstFileNotFound = 3,
+		CelarDomFileNotFound = 4,
+		CelarVarFileNotFound = 5,
+		CelarCtrFileNotFound = 6,
+		MallocError = 7,
+		FreeError = 8,
+		MaxcutFileNotFound = 9,
+		ConfigFileNotFound = 10,
+		SkeletonFileNotFound = 11,
+		InstanceProblemFileNotFound = 12,
+		ResultFileNotFound = 13,
+		IndexOutOfRange = 14,
+		Other = -1,
+	};
+};
+
+inline void show_message(Messages::value value)
 {
 	switch (value)
 	{
-		case 1: cout << endl << "Error: number of arguments in the execution call is incorrect !!"
-			     << endl; break;
-		case 2: cout << endl << "Error: It's imposible find Configuration file !!" << endl;
+		case Messages::WrongNumArgs:
+			cout << endl << "Error: number of arguments in the execution call is incorrect !!" << endl;
+			break;
+		case Messages::ConfFileNotFound:
+			cout << endl << "Error: It's imposible find Configuration file !!" << endl;
 			break;
 		/* Específicos de RLFAP */
-		case 3:	cout << endl << "Error: It is imposible find the Celar problem definition file (cst.txt) !!"
-			     << endl; break;
-		case 4: cout << endl << "Error: It is imposible find the Celar domains file (dom.txt) !!"
-			     << endl; break;
-		case 5:	cout << endl << "Error: It is imposible find the Celar links file (var.txt) !!"
-			     << endl; break;
-		case 6:	cout << endl << "Error: It is imposible find the Celar constraints file (ctr.txt) !!"
-			     << endl; break;
-		/* Fallos de Memoria */
-		case 7:	cout << endl << "Error: No avalible memory for \"malloc\" operation !!"  << endl;
+		case Messages::CelarCstFileNotFound:
+			cout << endl << "Error: It is imposible find the Celar problem definition file (cst.txt) !!" << endl;
 			break;
-		case 8:	cout << endl << "Error: in \"free\" operation !!"  << endl;
+		case Messages::CelarDomFileNotFound:
+			cout << endl << "Error: It is imposible find the Celar domains file (dom.txt) !!" << endl;
+			break;
+		case Messages::CelarVarFileNotFound:
+			cout << endl << "Error: It is imposible find the Celar links file (var.txt) !!" << endl;
+			break;
+		case Messages::CelarCtrFileNotFound:
+			cout << endl << "Error: It is imposible find the Celar constraints file (ctr.txt) !!" << endl;
+			break;
+		/* Fallos de Memoria */
+		case Messages::MallocError:
+			cout << endl << "Error: No avalible memory for \"malloc\" operation !!" << endl;
+			break;
+		case Messages::FreeError:
+			cout << endl << "Error: in \"free\" operation !!" << endl;
 			break;
 		/* Específicos del MaxCut */
-		case 9:	cout << endl << "Error: It is imposible find the Maxcut file (Maxcut.txt) !!"
-			     << endl; break;
+		case Messages::MaxcutFileNotFound:
+			cout << endl << "Error: It is imposible find the Maxcut file (Maxcut.txt) !!" << endl;
+			break;
 		/* Genéricos de Falta de ficheros de configuracion  adicionales al mensaje 2 */
-		case 10: cout << endl << "Error: It's imposible find Configuration file (Config.cfg) !!"
-			      << endl; break;
-		case 11: cout << endl << "Error: It's imposible find Skeleton Configuration File (Ske.cfg) !!"
-			      << endl; break;
-		case 12: cout << endl << "Error: It's imposible find Instance Problem File !!" << endl;
-			 break;
-		case 13: cout << endl << "Error: It's imposible find Resultate File !!" << endl;
-			 break;
-		case 14: cout << endl << "Error: Index out of Range !!" << endl;
-			 break;
+		case Messages::ConfigFileNotFound:
+			cout << endl << "Error: It's imposible find Configuration file (Config.cfg) !!" << endl;
+			break;
+		case Messages::SkeletonFileNotFound:
+			cout << endl << "Error: It's imposible find Skeleton Configuration File (Ske.cfg) !!" << endl;
+			break;
+		case Messages::InstanceProblemFileNotFound:
+			cout << endl << "Error: It's imposible find Instance Problem File !!" << endl;
+			break;
+		case Messages::ResultFileNotFound:
+			cout << endl << "Error: It's imposible find Resultate File !!" << endl;
+			break;
+		case Messages::IndexOutOfRange:
+			cout << endl << "Error: Index out of Range !!" << endl;
+			break;
 		default: cout << endl << "Unkown Error !!" << endl;
 	}
 

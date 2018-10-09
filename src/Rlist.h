@@ -384,7 +384,7 @@ template<class E> class Rlist
 				for (int i=0;i<source.size();i++)
 				{
 					if ((new_item=(E *)malloc(sizeof(E)))==NULL)
-						show_message(7);	
+						show_message(Messages::MallocError);	
 					(*new_item)=*(source.get_at(i).useful_data);
 					append(*new_item);
 				}

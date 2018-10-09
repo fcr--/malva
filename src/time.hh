@@ -34,8 +34,8 @@ inline float _used_time()
 inline float _used_time(float time)
 {
 	 float dif=_used_time() - time;
-	 if (dif<0) dif = 0;	
-	 return dif;	
+	 if (dif<0) dif = 0;
+	 return dif;
 }
 
 

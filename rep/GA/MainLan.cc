@@ -16,15 +16,15 @@ int main (int argc, char** argv)
 
 	strcat(path,"Config.cfg");
 	ifstream f(path);
-	if(!f) show_message(10);
+	if(!f) show_message(Messages::ConfigFileNotFound);
 
 	f.getline(&(path[len]),longitud,'\n');
 	ifstream f1(path);
-	if(!f1)	show_message(11);
+	if(!f1)	show_message(Messages::SkeletonFileNotFound);
 
 	f.getline(&(path[len]),longitud,'\n');
 	ifstream f2(path);
-	if(!f2) show_message(12);
+	if(!f2) show_message(Messages::InstanceProblemFileNotFound);
 
 	Problem pbm;
 	f2 >> pbm;
@@ -44,7 +44,7 @@ int main (int argc, char** argv)
 
 		f.getline(&(path[len]),longitud,'\n');
 	  	ofstream fexit(path);
-	  	if(!fexit) show_message(13);
+	  	if(!fexit) show_message(Messages::ResultFileNotFound);
 	  	fexit << solver.userstatistics();
 
 		cout << endl << endl << " :( ---------------------- THE END --------------- :) " << endl;

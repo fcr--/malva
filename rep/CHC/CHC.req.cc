@@ -134,7 +134,7 @@ skeleton CHC
 
 	double Solution::fitness () const
 	{
-        double fitness = 0.0;
+		double fitness = 0.0;
 
 		if(_var[0] == 2) return 0.0;
 			
@@ -249,7 +249,7 @@ skeleton CHC
 		struct user_stat *new_stat;
 
 		if ((new_stat=(struct user_stat *)malloc(sizeof(struct user_stat)))==NULL)
-			show_message(7);
+			show_message(Messages::MallocError);
 		new_stat->trial         				 = solver.current_trial();
 		new_stat->nb_evaluation_best_found_trial = solver.evaluations_best_found_in_trial();
 		new_stat->nb_iteration_best_found_trial  = solver.iteration_best_found_in_trial();
